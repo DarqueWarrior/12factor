@@ -1,6 +1,6 @@
 # The Twelve-Factor App
 
-Showing how to create a [Tweleve-Factor app](http://12factor.net/) using [ASP.NET Core](https://www.microsoft.com/net) and [Team Services](https://www.visualstudio.com/products/visual-studio-team-services-vs).
+Showing how to create a [Tweleve-Factor app](http://12factor.net/) using [ASP.NET Core](https://www.microsoft.com/net) and [Azure DevOps](http://bit.ly/Core12Factor).
 
 Each factor will live in a branch for that factor.  The master branch will contain the completed project.
 
