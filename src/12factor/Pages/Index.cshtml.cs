@@ -14,45 +14,17 @@ namespace _12factor.Pages
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
-        private readonly IConfiguration _configuration;
+        private readonly QueueEndpoint _queue;
 
-        public int MessageCount {get;set;} = 0;
-
-        public IndexModel(ILogger<IndexModel> logger, IConfiguration configuration)
+        public IndexModel(ILogger<IndexModel> logger, QueueEndpoint queue)
         {
             _logger = logger;
-            _configuration = configuration;
-        }
-
-        public async Task OnGetAsync()
-        {
-            var client = new QueueClient(_configuration["StorageConnectionString"], "12factorqueue");
-            await client.CreateIfNotExistsAsync();
-
-            if (await client.ExistsAsync())
-            {
-                // Retrieve the cached approximate message count.
-                QueueProperties properties = await client.GetPropertiesAsync();
-                MessageCount = properties.ApproximateMessagesCount;
-            }
+            _queue = queue;
         }
 
         public async Task OnPostAsync()
         {
-            var id = Guid.NewGuid();
-
-            var client = new QueueClient(_configuration["StorageConnectionString"], "12factorqueue");
-            await client.CreateIfNotExistsAsync();
-
-            if (await client.ExistsAsync())
-            {
-                // Send a message to the queue
-                await client.SendMessageAsync(id.ToString());
-
-                // Retrieve the cached approximate message count.
-                QueueProperties properties = await client.GetPropertiesAsync();
-                MessageCount = properties.ApproximateMessagesCount;
-            }
+            await _queue.SendMessage(Guid.NewGuid().ToString());
         }
     }
 }
