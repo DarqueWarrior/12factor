@@ -37,7 +37,8 @@ namespace _12factor.Pages
             }
         }
 
-        public async Task OnPostAsync() {
+        public async Task OnPostAsync()
+        {
             var id = Guid.NewGuid();
 
             var client = new QueueClient(_configuration["StorageConnectionString"], "12factorqueue");
