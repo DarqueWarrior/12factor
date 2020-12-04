@@ -5,6 +5,10 @@
         "webAppName": {
             "type": "string"
         },
+        "storageName":{
+           "type": "string",
+           "defaultValue": ""
+        },
         "hostingPlanName": {
             "type": "string"
         },
@@ -57,8 +61,23 @@
             },
             "dependsOn": [
                 "[concat('Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]",
-                "[resourceId('microsoft.insights/components/', parameters('webAppName'))]"
+                "[resourceId('microsoft.insights/components/', parameters('webAppName'))]",
+                "[resourceId('Microsoft.Storage/storageAccounts/', parameters('storageName'))]"
             ]
+        },
+        {
+           "name": "[parameters('storageName')]",
+           "type": "Microsoft.Storage/storageAccounts",
+           "apiVersion": "2019-06-01",
+           "tags": {
+              "displayName": "[parameters('storageName')]"
+           },
+           "location": "[resourceGroup().location]",
+           "kind": "StorageV2",
+           "sku": {
+              "name": "Premium_LRS",
+              "tier": "Premium"
+           }
         },
         {
             "type": "Microsoft.Web/serverfarms",
