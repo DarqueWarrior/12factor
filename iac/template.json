@@ -51,6 +51,10 @@
                         {
                             "name": "WEBSITE_NODE_DEFAULT_VERSION",
                             "value": "6.9.1"
+                        },
+                        {
+                           "name": "StorageConnectionString",
+                           "value": "testvalue"
                         }
                     ],
                     "phpVersion": "7.1"
