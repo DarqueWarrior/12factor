@@ -22,7 +22,7 @@
     },
     "variables": {
         "storageAccountApiVersion": "2018-07-01",
-        "storageAccountNameTidy": "[toLower(trim(parameters('storageAccountName')))]",
+        "storageAccountNameTidy": "[toLower(trim(parameters('storageName')))]"
     },
     "resources": [
         {
