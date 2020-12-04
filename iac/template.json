@@ -20,6 +20,10 @@
             "defaultValue": "Standard S1"
         }
     },
+    "variables": {
+        "storageAccountApiVersion": "2018-07-01",
+        "storageAccountNameTidy": "[toLower(trim(parameters('storageAccountName')))]",
+    },
     "resources": [
         {
             "type": "Microsoft.Web/sites",
@@ -54,7 +58,7 @@
                         },
                         {
                            "name": "StorageConnectionString",
-                           "value": "testvalue"
+                           "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountNameTidy'), ';AccountKey=', listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountNameTidy')), variables('storageAccountApiVersion')).keys[0].value)]"
                         }
                     ],
                     "metadata": [
