@@ -24,7 +24,7 @@
         {
             "type": "Microsoft.Web/sites",
             "name": "[parameters('webAppName')]",
-            "apiVersion": "2016-08-01",
+            "apiVersion": "2018-11-01",
             "location": "[resourceGroup().location]",
             "tags": {
                 "[concat('hidden-related:', '/subscriptions/', subscription().subscriptionId,'/resourcegroups/', resourceGroup().name, '/providers/Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]": "empty"
@@ -57,7 +57,14 @@
                            "value": "testvalue"
                         }
                     ],
-                    "phpVersion": "7.1"
+                    "metadata": [
+                        {
+                            "name": "CURRENT_STACK",
+                            "value": "dotnet"
+                        }
+                    ],
+                    "phpVersion": "7.1",
+                    "netFrameworkVersion": "v5.0"
                 },
                 "name": "[parameters('webAppName')]",
                 "serverFarmId": "[concat('/subscriptions/', subscription().subscriptionId,'/resourcegroups/', resourceGroup().name, '/providers/Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]",
