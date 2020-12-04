@@ -18,7 +18,7 @@ namespace _12factor
 
         public async Task SendMessage(string message)
         {
-            var client = new QueueClient(_configuration["StorageConnectionString"], "12factorqueue");
+            var client = new QueueClient(_configuration["StorageConnectionString"], _configuration["QueueName"]);
             await client.CreateIfNotExistsAsync();
 
             if (await client.ExistsAsync())
