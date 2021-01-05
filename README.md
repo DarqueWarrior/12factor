@@ -1,6 +1,6 @@
 # The Twelve-Factor App
 
-Showing how to create a [Tweleve-Factor app](http://12factor.net/) using [ASP.NET Core](https://www.microsoft.com/net) and [Azure DevOps](http://bit.ly/Core12Factor).
+Showing how to create a [Tweleve-Factor app](http://12factor.net/) using [ASP.NET Core](https://www.microsoft.com/net?WT.mc_id=devops-0000-dbrown) and [Azure DevOps](http://bit.ly/Core12Factor).
 
 Each factor will live in a branch for that factor.  The master branch will contain the completed project.
 
